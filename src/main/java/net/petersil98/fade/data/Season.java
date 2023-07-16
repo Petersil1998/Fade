@@ -1,10 +1,13 @@
 package net.petersil98.fade.data;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import net.petersil98.fade.collection.Seasons;
+import net.petersil98.fade.model.Deserializers;
 import net.petersil98.fade.util.ValLoader;
 
 import java.util.Objects;
 
+@JsonDeserialize(using = Deserializers.SeasonDeserializer.class)
 public class Season {
 
     private final String id;

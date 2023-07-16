@@ -302,12 +302,9 @@ public class ValLoader extends Loader {
             JsonNode root = Core.MAPPER.readTree(in);
             Map<String, Season> seasons = new HashMap<>();
             for(JsonNode node: root.get("data")) {
-                String id = node.get("uuid").asText();
-
-                long startTime = Instant.parse(node.get("startTime").asText()).getEpochSecond();
-                long endTime = Instant.parse(node.get("endTime").asText()).getEpochSecond();
-                seasons.put(id, new Season(id, node.get("displayName").asText(), startTime, endTime));
-                PARENT_SEASONS.put(id, node.get("parentUuid").asText(null));
+                Season season = MAPPER.readerFor(Season.class).readValue(node);
+                seasons.put(season.getId(), season);
+                PARENT_SEASONS.put(season.getId(), node.get("parentUuid").asText(null));
             }
             setFieldInCollection(Seasons.class, seasons);
             Seasons.getSeasons().forEach(Season::postInit);

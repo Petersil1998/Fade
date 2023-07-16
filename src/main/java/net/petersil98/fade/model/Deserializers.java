@@ -170,6 +170,18 @@ public class Deserializers {
         }
     }
 
+    public static class SeasonDeserializer extends JsonDeserializer<Season> {
+
+        @Override
+        public Season deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException {
+            JsonNode root = jp.getCodec().readTree(jp);
+
+            long startTime = Instant.parse(root.get("startTime").asText()).getEpochSecond();
+            long endTime = Instant.parse(root.get("endTime").asText()).getEpochSecond();
+            return new Season(root.get("uuid").asText(), root.get("displayName").asText(), startTime, endTime);
+        }
+    }
+
     public static class CompetitiveSeasonDeserializer extends JsonDeserializer<CompetitiveSeason> {
 
         @Override
