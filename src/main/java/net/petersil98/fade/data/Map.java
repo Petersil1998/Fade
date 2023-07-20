@@ -2,6 +2,7 @@ package net.petersil98.fade.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import net.petersil98.fade.util.Point;
 
 import java.util.List;
 import java.util.Objects;
@@ -82,19 +83,6 @@ public class Map {
 
         public Point getLocation() {
             return location;
-        }
-    }
-
-    public static class Point {
-        private float x;
-        private float y;
-
-        public float getX() {
-            return x;
-        }
-
-        public float getY() {
-            return y;
         }
     }
 

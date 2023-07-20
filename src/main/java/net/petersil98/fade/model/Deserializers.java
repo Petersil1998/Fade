@@ -22,6 +22,7 @@ import net.petersil98.fade.data.gunbuddy.GunBuddyLevel;
 import net.petersil98.fade.data.spray.Spray;
 import net.petersil98.fade.data.spray.SprayLevel;
 import net.petersil98.fade.data.weapon.*;
+import net.petersil98.fade.model.match.MatchDetails;
 
 import java.awt.*;
 import java.io.IOException;
@@ -243,6 +244,26 @@ public class Deserializers {
                     root.get("displayIcon").asText(null), root.get("killStreamIcon").asText(null),
                     MAPPER.readerFor(Weapon.Stats.class).readValue(root.get("weaponStats")),
                     MAPPER.readerFor(ShopData.class).readValue(root.get("shopData")), skins);
+        }
+    }
+
+    public static class LeaderboardDeserializer extends JsonDeserializer<Leaderboard> {
+
+        @Override
+        public Leaderboard deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException {
+            JsonNode root = jp.getCodec().readTree(jp);
+            List<RankEntry> players = MAPPER.readerForListOf(RankEntry.class).readValue(root.get("players"));
+            return new Leaderboard(players, root.get("totalPlayers").asInt(), root.get("immortalStartingPage").asInt(),
+                    root.get("immortalStartingIndex").asInt(), root.get("topTierRRThreshold").asInt());
+        }
+    }
+
+    public static class MatchDetailsDeserializer extends JsonDeserializer<MatchDetails> {
+
+        @Override
+        public MatchDetails deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException {
+            JsonNode root = jp.getCodec().readTree(jp);
+            return null;
         }
     }
 
