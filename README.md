@@ -137,4 +137,4 @@ Now Fade is ready and set up!
     - Weapons
     - ...
 
-### Feel free to give Feedback and add suggestions on how this library can be improved. <br>Thank you for using Thresh, you're awesome!
+### Feel free to give Feedback and add suggestions on how this library can be improved. <br>Thank you for using Fade, you're awesome!
