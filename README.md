@@ -1,4 +1,4 @@
-# Thresh
+# Fade
 
 Fade is an Object-Oriented Java Library, which takes over the Communication with the Valorant API. It supports In-Memory caching and uses a (blocking) Rate Limiter. It makes retrieving Match History, Leaderboards
 and static Data like Weapons, Maps, Player cards, etc. much easier.
